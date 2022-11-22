@@ -2,13 +2,18 @@ from menu import products
 
 
 def get_product_by_id(_id: int):
+    if type(_id) != int:
+            raise TypeError("product id must be an int")
     for dish in products:
         if dish["_id"] == _id:
             return dish
     return {}
     
+    
 
 def get_products_by_type(_type: str):
+    if type(_type) != str:
+        raise TypeError("product type must be a str")
     lis = []
     for dish in products:
         if dish["type"] == _type:
@@ -40,5 +45,5 @@ def add_product(menu: list, **kwargs):
             max_product_id = product["_id"]
     max_product_id += 1
     kwargs["_id"] = max_product_id
-       
+    menu.append(kwargs)
     return kwargs
