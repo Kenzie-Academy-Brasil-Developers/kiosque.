@@ -29,4 +29,16 @@ def menu_report():
             max_type_value = _type[1]
             most_common_type = _type[0]
 
-    return f"Products Count: {len(products)} - Average Price: ${average/len(products)} - Most Common Type: {most_common_type}"
+    return f"Products Count: {len(products)} - Average Price: ${round(average/len(products),2)} - Most Common Type: {most_common_type}"
+
+
+
+def add_product(menu: list, **kwargs):
+    max_product_id = 0
+    for product in menu:
+        if product["_id"] > max_product_id:
+            max_product_id = product["_id"]
+    max_product_id += 1
+    kwargs["_id"] = max_product_id
+       
+    return kwargs
